@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Food_Engine</string>
+    <string name="order_number">Order Number</string>
+    <string name="_11234532">11234532</string>
+    <string name="price">Price</string>
+    <string name="dollar">$</string>
 </resources>
