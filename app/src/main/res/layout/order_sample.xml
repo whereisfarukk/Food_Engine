@@ -61,9 +61,10 @@
                         android:id="@+id/orderNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:text="@string/_11234532"
-                        android:textColor="#DD2C00"
+                        android:text="445511"
+                        android:textColor="#FF9800"
                         android:textColorHighlight="#FF9800" />
 
                 </LinearLayout>
@@ -80,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="5dp"
                         android:padding="1dp"
-                        android:text="@string/price"
+                        android:text="Price"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -88,7 +89,7 @@
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/dollar"
+                        android:text="$"
                         android:textColor="@android:color/holo_red_dark"
                         android:textStyle="bold" />
 
