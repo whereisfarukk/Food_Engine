@@ -24,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         ArrayList<MainModel>list=new ArrayList<>();
-        list.add(new MainModel(R.drawable.burger,"$","Burger","Chicken Burger with extra cheese"));
-        list.add(new MainModel(R.drawable.burger,"$","Burger","Chicken Burger with extra cheese"));
-        list.add(new MainModel(R.drawable.burger,"$","Burger","Chicken Burger with extra cheese"));
-        list.add(new MainModel(R.drawable.burger,"$","Burger","Chicken Burger with extra cheese"));
-        list.add(new MainModel(R.drawable.burger,"$","Burger","Chicken Burger with extra cheese"));
-        list.add(new MainModel(R.drawable.burger,"$","Burger","Chicken Burger with extra cheese"));
-        list.add(new MainModel(R.drawable.burger,"$","Burger","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.burger,"Burger", "15","Chicken Burger with extra cheese"));
 
         MainAdapter adapter=new MainAdapter(list,this);
         binding.recyclerview.setAdapter(adapter);
