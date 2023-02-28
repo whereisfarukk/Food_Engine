@@ -3,6 +3,8 @@ package com.example.food_engine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.food_engine.databinding.ActivityDetailBinding;
 
@@ -23,5 +25,25 @@ public class DetailActivity extends AppCompatActivity {
         binding.priceLbl.setText(String.format("%d", price));
         binding.foodName.setText(name);
         binding.detailDescription.setText(description);
+
+        DBHelper helper = new DBHelper(this);
+
+        binding.insertButton.setOnClickListener(view -> {
+            boolean isInserted = helper.insertOrder(
+                    binding.nameBox.getText().toString(),
+                    binding.phoneBox.getText().toString(),
+                    price,
+                    image,
+                    name,
+                    description,
+                    Integer.parseInt(binding.quantity.getText().toString())
+            );
+
+            if (isInserted) {
+                Toast.makeText(this, "Order Successful", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
