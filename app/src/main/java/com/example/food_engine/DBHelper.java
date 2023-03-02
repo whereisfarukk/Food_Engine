@@ -2,15 +2,20 @@ package com.example.food_engine;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.food_engine.Models.OrdersModel;
+
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     static final String DBNAME = "mydatabase.db";
-    static final int DBVERSION = 1;
+    static final int DBVERSION = 3;
 
     public DBHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVERSION);
@@ -37,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertOrder(String name, String phone, int price, int image, String desc, String foodName, int quantity) {
+    public boolean insertOrder(String name, String phone, int price, int image,  String foodName, String desc, int quantity) {
         SQLiteDatabase database = getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
@@ -53,5 +58,24 @@ public class DBHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    public ArrayList<OrdersModel> getOrders() {
+        ArrayList<OrdersModel> orders = new ArrayList<>();
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select id, foodName, image, price from orders", null);
+        if (cursor.moveToFirst()) {
+            while (cursor.moveToNext()) {
+                OrdersModel model = new OrdersModel();
+                model.setOrderNumber(cursor.getInt(0) + "");
+                model.setSoldItemName(cursor.getString(1));
+                model.setOrderImage(cursor.getInt(2));
+                model.setPrice(cursor.getInt(3) + "");
+                orders.add(model);
+            }
+        }
+        cursor.close();
+        database.close();
+        return orders;
     }
 }
