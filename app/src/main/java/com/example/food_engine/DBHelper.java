@@ -45,6 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean insertOrder(String name, String phone, int price, int image,  String foodName, String desc, int quantity) {
         SQLiteDatabase database = getReadableDatabase();
         ContentValues values = new ContentValues();
+
         values.put("name", name);
         values.put("phone", phone);
         values.put("price", price);
@@ -58,6 +59,37 @@ public class DBHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    public boolean updateOrder(String name, String phone, int price, int image,  String foodName, String desc, int quantity, int id) {
+        SQLiteDatabase database = getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("name", name);
+        values.put("phone", phone);
+        values.put("price", price);
+        values.put("image", image);
+        values.put("description", desc);
+        values.put("foodName", foodName);
+        values.put("quantity", quantity);
+        long row = database.update("orders", values, "id = " + id, null);
+        if (row <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public int getCursorIndex(String str) {      // returns the index of the data in the table
+        if (str.equals("id")) return 0;
+        if (str.equals("name")) return 1;
+        if (str.equals("phone")) return 2;
+        if (str.equals("price")) return 3;
+        if (str.equals("image")) return 4;
+        if (str.equals("foodName")) return 5;
+        if (str.equals("quantity")) return 6;
+        if (str.equals("description")) return 7;
+        return -1;
     }
 
     public ArrayList<OrdersModel> getOrders() {
@@ -77,5 +109,22 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         database.close();
         return orders;
+    }
+
+    public Cursor getOrderById(int id) {
+        ArrayList<OrdersModel> orders = new ArrayList<>();
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select * from orders", null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+
+        return cursor;
+    }
+
+    public int deleteOrder(String id) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        return database.delete("orders", "id = " + id, null);
     }
 }

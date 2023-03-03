@@ -1,16 +1,22 @@
 package com.example.food_engine.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.food_engine.DBHelper;
+import com.example.food_engine.DetailActivity;
 import com.example.food_engine.Models.OrdersModel;
+import com.example.food_engine.OrderActivity;
 import com.example.food_engine.R;
 
 import java.util.ArrayList;
@@ -39,6 +45,30 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewholder
         holder.soldItemName.setText(model.getSoldItemName());
         holder.orderNumber.setText(model.getOrderNumber());
         holder.price.setText(model.getPrice());
+
+        holder.itemView.setOnClickListener(view -> {
+             Intent intent = new Intent(context, DetailActivity.class);
+             intent.putExtra("id", Integer.parseInt(model.getOrderNumber()));
+             intent.putExtra("type", 2);
+             context.startActivity(intent);
+        });
+
+        holder.itemView.setOnLongClickListener(view -> {
+            DBHelper helper = new DBHelper(context);
+            new AlertDialog.Builder(context)
+                    .setTitle("Delete")
+                    .setIcon(R.drawable.warning)
+                    .setMessage("Are you sure you want to delete the order?")
+                    .setPositiveButton("yes", (dialogInterface, i) -> {
+                        if (helper.deleteOrder(model.getOrderNumber()) > 0) {
+                            Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel()).show();
+            return false;
+        });
     }
 
     @Override
