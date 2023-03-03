@@ -1,9 +1,13 @@
 package com.example.food_engine;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.food_engine.Adapters.OrdersAdapter;
 import com.example.food_engine.Models.OrdersModel;
@@ -30,5 +34,21 @@ public class OrderActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.orderRecyclerView.setLayoutManager(layoutManager);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mainmenu:
+                startActivity(new Intent(OrderActivity.this, MainActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
