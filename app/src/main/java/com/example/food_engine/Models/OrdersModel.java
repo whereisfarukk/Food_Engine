@@ -5,6 +5,8 @@ public class OrdersModel {
     int orderImage;
     String soldItemName, price, orderNumber;
 
+    public OrdersModel() {}
+
     public OrdersModel(int orderImage, String soldItemName, String price, String orderNumber) {
         this.orderImage = orderImage;
         this.soldItemName = soldItemName;
