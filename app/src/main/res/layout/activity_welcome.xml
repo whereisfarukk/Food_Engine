@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light"
+    tools:context=".welcomeActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        app:srcCompat="@drawable/welcomelogo" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/foreground_design"
+        android:scaleType="centerCrop"
+         />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="297dp"
+        android:fontFamily="@font/lobster"
+        android:gravity="center"
+        android:text="Food Engine"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="30sp"
+        android:layout_marginTop="525sp"
+        android:layout_marginRight="30sp"
+        android:padding="12dp"
+        android:text="Register"
+        app:cornerRadius="10dp" />
+
+    <TextView
+        android:id="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="620sp"
+        android:gravity="center"
+        android:text="Sign In"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+</RelativeLayout>
