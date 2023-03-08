@@ -11,21 +11,20 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         app:srcCompat="@drawable/welcomelogo" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="@drawable/foreground_design"
-        android:scaleType="centerCrop"
-         />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="297dp"
+        android:layout_marginTop="287dp"
         android:fontFamily="@font/lobster"
         android:gravity="center"
         android:text="Food Engine"
@@ -42,7 +41,7 @@
         android:layout_marginLeft="30sp"
         android:layout_marginTop="525sp"
         android:layout_marginRight="30sp"
-        android:padding="12dp"
+        android:padding="15dp"
         android:text="Register"
         app:cornerRadius="10dp" />
 
