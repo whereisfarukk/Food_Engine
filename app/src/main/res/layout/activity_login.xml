@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_orange_light"
-    tools:context=".RegistrationActivity"
+    tools:context=".LoginActivity"
     android:orientation="horizontal">
 
     <ImageView
@@ -25,35 +25,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="310dp"
+        android:fontFamily="@font/aclonica"
         android:gravity="center"
-        android:text="Register"
+        android:text="Sign In"
         android:textColor="#FFFFFF"
         android:textColorHint="#FBFBFB"
         android:textSize="23sp"
-        android:fontFamily="@font/aclonica"
         android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="375dp"
-        android:layout_marginRight="40dp"
-        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
-        android:drawablePadding="13dp"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:minHeight="40dp"
-        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/phoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="365dp"
         android:layout_marginRight="40dp"
         android:drawableLeft="@drawable/ic_baseline_phone_24"
         android:drawablePadding="13dp"
@@ -68,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="465dp"
+        android:layout_marginTop="415dp"
         android:layout_marginRight="40dp"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="13dp"
@@ -77,6 +62,19 @@
         android:inputType="textPersonName"
         android:minHeight="40dp"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="460dp"
+        android:layout_marginRight="40dp"
+        android:gravity="right"
+        android:text="Forget Password?"
+        android:textColor="#32AA37"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/register"
@@ -87,34 +85,32 @@
         android:layout_marginTop="540sp"
         android:layout_marginRight="30sp"
         android:padding="15dp"
-        android:text="Register"
+        android:text="Sign In"
         app:cornerRadius="10dp" />
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="610dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginRight="70dp"
         android:gravity="center"
-        android:text="Already Registered?"
+        android:text="Don't have an account?"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="60dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="240dp"
+        android:layout_marginLeft="220dp"
         android:layout_marginTop="610dp"
         android:gravity="center"
-        android:text="Sign In"
+        android:text="Register"
         android:textColor="#C51D1D"
-        android:onClick="signin"
+        android:onClick="register"
         android:textSize="15sp"
         android:textStyle="bold" />
-
-
 </RelativeLayout>
