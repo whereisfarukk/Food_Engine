@@ -11,7 +11,7 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/welcomelogo" />
 
     <ImageView
@@ -24,7 +24,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="287dp"
+        android:layout_marginTop="277dp"
         android:fontFamily="@font/lobster"
         android:gravity="center"
         android:text="Food Engine"
@@ -43,6 +43,7 @@
         android:layout_marginRight="30sp"
         android:padding="15dp"
         android:text="Register"
+        android:onClick="register"
         app:cornerRadius="10dp" />
 
     <TextView
@@ -51,8 +52,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="620sp"
         android:gravity="center"
+        android:onClick="signin"
         android:text="Sign In"
         android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </RelativeLayout>

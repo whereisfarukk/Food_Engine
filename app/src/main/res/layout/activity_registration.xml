@@ -12,7 +12,7 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/welcomelogo" />
 
     <ImageView
@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="310dp"
         android:gravity="center"
         android:text="Register"
         android:textColor="#FFFFFF"
@@ -92,27 +92,28 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
+        android:layout_marginLeft="85dp"
         android:layout_marginTop="610dp"
         android:layout_marginRight="60dp"
         android:gravity="center"
         android:text="Already Registered?"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="100dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
+        android:layout_marginLeft="240dp"
         android:layout_marginTop="610dp"
         android:gravity="center"
         android:text="Sign In"
         android:textColor="#C51D1D"
-        android:textSize="16sp"
+        android:onClick="signin"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
 
