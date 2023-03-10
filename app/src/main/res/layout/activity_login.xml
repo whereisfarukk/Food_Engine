@@ -77,13 +77,14 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
         android:layout_marginLeft="30sp"
         android:layout_marginTop="540sp"
         android:layout_marginRight="30sp"
+        android:onClick="signInComplete"
         android:padding="15dp"
         android:text="Sign In"
         app:cornerRadius="10dp" />
@@ -108,9 +109,9 @@
         android:layout_marginLeft="220dp"
         android:layout_marginTop="610dp"
         android:gravity="center"
+        android:onClick="register"
         android:text="Register"
         android:textColor="#C51D1D"
-        android:onClick="register"
         android:textSize="15sp"
         android:textStyle="bold" />
 </RelativeLayout>
