@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.food_engine.DBHelper;
 import com.example.food_engine.DetailActivity;
 import com.example.food_engine.Models.OrdersModel;
-import com.example.food_engine.OrderActivity;
 import com.example.food_engine.R;
 
 import java.util.ArrayList;
