@@ -86,6 +86,7 @@
         android:layout_marginLeft="30sp"
         android:layout_marginTop="540sp"
         android:layout_marginRight="30sp"
+        android:onClick="regComplete"
         android:padding="15dp"
         android:text="Register"
         app:cornerRadius="10dp" />
