@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
 
     static final String DBNAME = "mydatabase.db";
-    static final int DBVERSION = 6;
+    static final int DBVERSION = 7;
 
     public DBHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVERSION);
@@ -24,34 +24,38 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(
-                "create table orders" +
-                        "(id integer primary key autoincrement," +
-                        "name text," +
-                        "phone text," +
-                        "price integer," +
-                        "image integer," +
-                        "foodName text," +
-                        "quantity integer," +
-                        "description text)"
+        String createOrders = "create table orders" +
+            "(id integer primary key autoincrement," +
+            "name text," +
+            "phone text," +
+            "price integer," +
+            "image integer," +
+            "foodName text," +
+            "quantity integer," +
+            "description text)";
 
-        );
+        String createFoods = "create table foods" +
+            "(id integer primary key autoincrement," +
+            "foodName text," +
+            "image integer," +
+            "price integer," +
+            "description text)";
 
-//        sqLiteDatabase.execSQL(
-//                "create table foods" +
-//                        "(id integer primary key autoincrement," +
-//                        "foodName text," +
-//                        "image integer," +
-//                        "price integer," +
-//                        "description text)"
-//
-//        );
+        String createUsers = "create table users" +
+            "(userName text," +
+            "phone text primary key," +
+            "password text)";
+
+        sqLiteDatabase.execSQL(createOrders);
+        sqLiteDatabase.execSQL(createFoods);
+        sqLiteDatabase.execSQL(createUsers);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP table if exists orders");
-//        sqLiteDatabase.execSQL("DROP table if exists foods");
+        sqLiteDatabase.execSQL("DROP table if exists foods");
+        sqLiteDatabase.execSQL("DROP table if exists users");
         onCreate(sqLiteDatabase);
     }
 
@@ -123,10 +127,10 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<OrdersModel> orders = new ArrayList<>();
         SQLiteDatabase database = getWritableDatabase();
         Cursor cursor = database.rawQuery("select id, foodName, image, price, quantity from orders", null);
-        if (cursor.moveToFirst()) {
+        if (cursor != null) {
             while (cursor.moveToNext()) {
                 OrdersModel model = new OrdersModel();
-                model.setOrderNumber(cursor.getInt(0)+ "");
+                model.setOrderNumber(cursor.getInt(0) + "");
                 model.setSoldItemName(cursor.getString(1));
                 model.setOrderImage(cursor.getInt(2));
                 model.setPrice(cursor.getInt(3) + "");
@@ -143,7 +147,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery("select * from orders", null);
         if (cursor != null) {
-            cursor.moveToFirst();
             while (cursor.moveToNext()) {
                 if (cursor.getInt(0) == id) {
                     return cursor;

@@ -64,7 +64,7 @@ public class DetailActivity extends AppCompatActivity {
 
                     if (isInserted) {
                         Toast.makeText(this, "Order Successful", Toast.LENGTH_SHORT).show();
-                        //                    startActivity(new Intent(DetailActivity.this, OrderActivity.class));
+                        startActivity(new Intent(DetailActivity.this, MainActivity.class));
                     } else {
                         Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
                     }
