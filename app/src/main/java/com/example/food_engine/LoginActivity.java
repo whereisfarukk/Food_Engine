@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.food_engine.databinding.ActivityLoginBinding;
 
@@ -26,11 +27,13 @@ public class LoginActivity extends AppCompatActivity {
     public void signInComplete(View view) {
         String phoneNumber = binding.phoneNumber.getText().toString();
         String password = binding.password.getText().toString();
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
-        intent.putExtra("type", 2);
-        intent.putExtra("phoneNumber", phoneNumber);
-
-        startActivity(intent);
+        if (phoneNumber.isEmpty() || password.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Please type your phone number and password", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("type", 2);
+            intent.putExtra("phoneNumber", phoneNumber);
+            startActivity(intent);
+        }
     }
 }

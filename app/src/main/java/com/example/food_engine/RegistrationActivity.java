@@ -38,7 +38,6 @@ public class RegistrationActivity extends AppCompatActivity {
             intent.putExtra("userName", userName);
             intent.putExtra("phoneNumber", phoneNumber);
             intent.putExtra("password", password);
-
             startActivity(intent);
         }
     }

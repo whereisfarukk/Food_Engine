@@ -59,7 +59,7 @@
         android:drawablePadding="13dp"
         android:ems="10"
         android:hint="Mobile Number"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:minHeight="40dp"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -74,7 +74,7 @@
         android:drawablePadding="13dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:minHeight="40dp"
         tools:ignore="TouchTargetSizeCheck" />
 
