@@ -55,10 +55,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
                         android:padding="1dp"
-                        android:text="Order Number" />
+                        android:text="Quantity" />
 
                     <TextView
-                        android:id="@+id/orderNumber"
+                        android:id="@+id/orderQuantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"

@@ -3,14 +3,23 @@ package com.example.food_engine.Models;
 public class OrdersModel {
 
     int orderImage;
-    String soldItemName, price, orderNumber;
+    String soldItemName, price, orderQuantity, orderNumber;
 
     public OrdersModel() {}
 
-    public OrdersModel(int orderImage, String soldItemName, String price, String orderNumber) {
+    public OrdersModel(int orderImage, String soldItemName, String price, String orderQuantity, String orderNumber) {
         this.orderImage = orderImage;
         this.soldItemName = soldItemName;
         this.price = price;
+        this.orderQuantity = orderQuantity;
+        this.orderNumber = orderNumber;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }
 
@@ -38,11 +47,11 @@ public class OrdersModel {
         this.price = price;
     }
 
-    public String getOrderNumber() {
-        return orderNumber;
+    public String getOrderQuantity() {
+        return orderQuantity;
     }
 
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setOrderQuantity(String orderQuantity) {
+        this.orderQuantity = orderQuantity;
     }
 }

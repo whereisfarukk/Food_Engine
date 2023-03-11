@@ -42,7 +42,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewholder
         final OrdersModel model = list.get(position);
         holder.orderImage.setImageResource(model.getOrderImage());
         holder.soldItemName.setText(model.getSoldItemName());
-        holder.orderNumber.setText(model.getOrderNumber());
+        holder.orderQuantity.setText(model.getOrderQuantity());
         holder.price.setText(model.getPrice());
 
         holder.itemView.setOnClickListener(view -> {
@@ -55,12 +55,12 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewholder
         holder.itemView.setOnLongClickListener(view -> {
             DBHelper helper = new DBHelper(context);
             new AlertDialog.Builder(context)
-                    .setTitle("Delete")
+                    .setTitle("Cancel")
                     .setIcon(R.drawable.warning)
-                    .setMessage("Are you sure you want to delete the order?")
+                    .setMessage("Are you sure you want to cancel the order?")
                     .setPositiveButton("yes", (dialogInterface, i) -> {
                         if (helper.deleteOrder(model.getOrderNumber()) > 0) {
-                            Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show();
                         }
@@ -77,13 +77,13 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewholder
 
     public class viewholder extends RecyclerView.ViewHolder {
         ImageView orderImage;
-        TextView soldItemName, orderNumber, price;
+        TextView soldItemName, orderQuantity, price;
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
             orderImage = itemView.findViewById(R.id.orderImage);
             soldItemName = itemView.findViewById(R.id.orderItemName);
-            orderNumber = itemView.findViewById(R.id.orderNumber);
+            orderQuantity = itemView.findViewById(R.id.orderQuantity);
             price = itemView.findViewById(R.id.soldItemPrice);
         }
     }

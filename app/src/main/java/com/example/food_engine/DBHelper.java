@@ -95,14 +95,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<OrdersModel> getOrders() {
         ArrayList<OrdersModel> orders = new ArrayList<>();
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("select id, foodName, image, price from orders", null);
+        Cursor cursor = database.rawQuery("select id, foodName, image, price, quantity from orders", null);
         if (cursor.moveToFirst()) {
             while (cursor.moveToNext()) {
                 OrdersModel model = new OrdersModel();
-                model.setOrderNumber(cursor.getInt(0) + "");
+                model.setOrderNumber(cursor.getInt(0)+ "");
                 model.setSoldItemName(cursor.getString(1));
                 model.setOrderImage(cursor.getInt(2));
                 model.setPrice(cursor.getInt(3) + "");
+                model.setOrderQuantity(cursor.getInt(4) + "");
                 orders.add(model);
             }
         }
@@ -112,7 +113,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getOrderById(int id) {
-        ArrayList<OrdersModel> orders = new ArrayList<>();
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery("select * from orders", null);
 

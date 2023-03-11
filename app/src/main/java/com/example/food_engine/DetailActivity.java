@@ -23,6 +23,19 @@ public class DetailActivity extends AppCompatActivity {
 
         final DBHelper helper = new DBHelper(this);
 
+        binding.subtract.setOnClickListener(view -> {
+            int quantity = Integer.parseInt(binding.quantity.getText().toString());
+            if (quantity > 1) {
+                quantity--;
+            }
+            binding.quantity.setText(quantity + "");
+        });
+
+        binding.add.setOnClickListener(view -> {
+            int quantity = Integer.parseInt(binding.quantity.getText().toString()) + 1;
+            binding.quantity.setText(quantity + "");
+        });
+
         if (getIntent().getIntExtra("type", 0) == 1) {
             int image = getIntent().getIntExtra("image", 0);
             int price = Integer.parseInt(getIntent().getStringExtra("price"));
@@ -30,7 +43,7 @@ public class DetailActivity extends AppCompatActivity {
             String description = getIntent().getStringExtra("description");
 
             binding.detailImage.setImageResource(image);
-            binding.priceLbl.setText(String.format("%d", price));
+            binding.priceLbl.setText(price + "");
             binding.foodName.setText(name);
             binding.detailDescription.setText(description);
 
@@ -62,6 +75,7 @@ public class DetailActivity extends AppCompatActivity {
             binding.detailDescription.setText(cursor.getString(helper.getCursorIndex("description")));
             binding.nameBox.setText(cursor.getString(helper.getCursorIndex("name")));
             binding.phoneBox.setText(cursor.getString(helper.getCursorIndex("phone")));
+            binding.quantity.setText(cursor.getInt(helper.getCursorIndex("quantity")) + "");
             binding.insertButton.setText("Update Now");
 
             binding.insertButton.setOnClickListener(view -> {
@@ -72,7 +86,7 @@ public class DetailActivity extends AppCompatActivity {
                         image,
                         binding.detailDescription.getText().toString(),
                         binding.foodName.getText().toString(),
-                        1,
+                        Integer.parseInt(binding.quantity.getText().toString()),
                         id
                 );
 
