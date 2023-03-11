@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.food_engine.Models.MainModel;
 import com.example.food_engine.Models.OrdersModel;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
 
     static final String DBNAME = "mydatabase.db";
-    static final int DBVERSION = 3;
+    static final int DBVERSION = 6;
 
     public DBHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVERSION);
@@ -33,12 +34,24 @@ public class DBHelper extends SQLiteOpenHelper {
                         "foodName text," +
                         "quantity integer," +
                         "description text)"
+
         );
+
+//        sqLiteDatabase.execSQL(
+//                "create table foods" +
+//                        "(id integer primary key autoincrement," +
+//                        "foodName text," +
+//                        "image integer," +
+//                        "price integer," +
+//                        "description text)"
+//
+//        );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP table if exists orders");
+//        sqLiteDatabase.execSQL("DROP table if exists foods");
         onCreate(sqLiteDatabase);
     }
 
@@ -61,16 +74,12 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean updateOrder(String name, String phone, int price, int image,  String foodName, String desc, int quantity, int id) {
+    public boolean updateOrder(String name, String phone, int quantity, int id) {
         SQLiteDatabase database = getReadableDatabase();
         ContentValues values = new ContentValues();
 
         values.put("name", name);
         values.put("phone", phone);
-        values.put("price", price);
-        values.put("image", image);
-        values.put("description", desc);
-        values.put("foodName", foodName);
         values.put("quantity", quantity);
         long row = database.update("orders", values, "id = " + id, null);
         if (row <= 0) {
@@ -92,9 +101,27 @@ public class DBHelper extends SQLiteOpenHelper {
         return -1;
     }
 
+//    public ArrayList<MainModel> getAllFoods() {
+//        ArrayList<MainModel> foods = new ArrayList<>();
+//        SQLiteDatabase database = getWritableDatabase();
+//        Cursor cursor = database.rawQuery("select id, foodName, image, price, description from foods", null);
+//        if (cursor.moveToFirst()) {
+//            while (cursor.moveToNext()) {
+//                MainModel model = new MainModel();
+//                model.setId(cursor.getInt(0) + "");
+//                model.setName(cursor.getString(1));
+//                model.setImage(cursor.getInt(2));
+//                model.setPrice(cursor.getInt(3) + "");
+//                model.setDescription(cursor.getString(4));
+//                foods.add(model);
+//            }
+//        }
+//        return foods;
+//    }
+
     public ArrayList<OrdersModel> getOrders() {
         ArrayList<OrdersModel> orders = new ArrayList<>();
-        SQLiteDatabase database = this.getWritableDatabase();
+        SQLiteDatabase database = getWritableDatabase();
         Cursor cursor = database.rawQuery("select id, foodName, image, price, quantity from orders", null);
         if (cursor.moveToFirst()) {
             while (cursor.moveToNext()) {
@@ -115,11 +142,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getOrderById(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery("select * from orders", null);
-
         if (cursor != null) {
             cursor.moveToFirst();
+            while (cursor.moveToNext()) {
+                if (cursor.getInt(0) == id) {
+                    return cursor;
+                }
+            }
         }
-
         return cursor;
     }
 
