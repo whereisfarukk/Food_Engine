@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.food_engine.DBHelper;
 import com.example.food_engine.DetailActivity;
 import com.example.food_engine.Models.OrdersModel;
+import com.example.food_engine.OrderActivity;
 import com.example.food_engine.R;
 
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewholder
                     .setPositiveButton("yes", (dialogInterface, i) -> {
                         if (helper.deleteOrder(model.getOrderNumber()) > 0) {
                             Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show();
+                            context.startActivity(new Intent(context, OrderActivity.class));
                         } else {
                             Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show();
                         }

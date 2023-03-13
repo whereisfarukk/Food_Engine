@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase database) {
         String createOrders = "create table orders" +
             "(id integer primary key autoincrement," +
             "name text," +
@@ -46,17 +46,17 @@ public class DBHelper extends SQLiteOpenHelper {
             "phone text primary key," +
             "password text)";
 
-        sqLiteDatabase.execSQL(createOrders);
-        sqLiteDatabase.execSQL(createFoods);
-        sqLiteDatabase.execSQL(createUsers);
+        database.execSQL(createOrders);
+        database.execSQL(createFoods);
+        database.execSQL(createUsers);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP table if exists orders");
-        sqLiteDatabase.execSQL("DROP table if exists foods");
-        sqLiteDatabase.execSQL("DROP table if exists users");
-        onCreate(sqLiteDatabase);
+    public void onUpgrade(SQLiteDatabase database, int i, int i1) {
+        database.execSQL("DROP table if exists orders");
+        database.execSQL("DROP table if exists foods");
+        database.execSQL("DROP table if exists users");
+        onCreate(database);
     }
 
     public boolean insertOrder(String name, String phone, int price, int image,  String foodName, String desc, int quantity) {
@@ -127,8 +127,8 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<OrdersModel> orders = new ArrayList<>();
         SQLiteDatabase database = getWritableDatabase();
         Cursor cursor = database.rawQuery("select id, foodName, image, price, quantity from orders", null);
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
+        if (cursor.moveToFirst()) {
+            do {
                 OrdersModel model = new OrdersModel();
                 model.setOrderNumber(cursor.getInt(0) + "");
                 model.setSoldItemName(cursor.getString(1));
@@ -136,7 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 model.setPrice(cursor.getInt(3) + "");
                 model.setOrderQuantity(cursor.getInt(4) + "");
                 orders.add(model);
-            }
+            } while (cursor.moveToNext());
         }
         cursor.close();
         database.close();
@@ -144,20 +144,16 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getOrderById(int id) {
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("select * from orders", null);
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                if (cursor.getInt(0) == id) {
-                    return cursor;
-                }
-            }
-        }
+        SQLiteDatabase database = getReadableDatabase();
+        String selection = "id = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+        Cursor cursor = database.query("orders", null, selection, selectionArgs, null, null, null);
+        cursor.moveToFirst();
         return cursor;
     }
 
     public int deleteOrder(String id) {
-        SQLiteDatabase database = this.getWritableDatabase();
+        SQLiteDatabase database = getWritableDatabase();
         return database.delete("orders", "id = " + id, null);
     }
 }
