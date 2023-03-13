@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             Cursor cursor = sqLiteDatabase.query("users", projection, selection, selectionArgs, null, null, null);
             if (cursor.moveToFirst()) {
                 if (password.equals(cursor.getString(1))) {
-                    Toast.makeText(LoginActivity.this, "Log in successful!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();

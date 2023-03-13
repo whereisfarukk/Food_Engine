@@ -61,7 +61,6 @@ public class DetailActivity extends AppCompatActivity {
                             description,
                             Integer.parseInt(binding.quantity.getText().toString())
                     );
-
                     if (isInserted) {
                         Toast.makeText(this, "Order Successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(DetailActivity.this, MainActivity.class));
@@ -74,7 +73,6 @@ public class DetailActivity extends AppCompatActivity {
             int id = getIntent().getIntExtra("id", 0);
 //            Toast.makeText(DetailActivity.this, id + "", Toast.LENGTH_SHORT).show();
             Cursor cursor = helper.getOrderById(id);
-            final int image = cursor.getInt(helper.getCursorIndex("image"));
 
             binding.detailImage.setImageResource(cursor.getInt(helper.getCursorIndex("image")));
             binding.priceLbl.setText(cursor.getString(helper.getCursorIndex("price")));
@@ -97,7 +95,6 @@ public class DetailActivity extends AppCompatActivity {
                             Integer.parseInt(binding.quantity.getText().toString()),
                             id
                     );
-
                     if (isUpdated) {
                         Toast.makeText(DetailActivity.this, "Order Updated", Toast.LENGTH_SHORT).show();
                     } else {
