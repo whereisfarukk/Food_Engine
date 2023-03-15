@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new MainModel(R.drawable.hotdog,"Cheese Burger", "2","A hot dog is a food consisting of a grilled or steamed sausage served in the slit of a partially sliced bun."));
         list.add(new MainModel(R.drawable.chicken_fry,"Fried chicken", "5","Fried chicken, also known as Southern fried chicken, is a dish consisting of chicken pieces that have been coated with seasoned flour or batter"));
         list.add(new MainModel(R.drawable.chips,"Chips", "2","Chips are long, thin pieces of potato fried in oil or fat and eaten hot, usually with a meal."));
-        list.add(new MainModel(R.drawable.pankake,"pancake", "1.5","A pancake is a thin, flat, circular piece of cooked batter made from milk, flour, and eggs."));
+        list.add(new MainModel(R.drawable.pankake,"pancake", "4","A pancake is a thin, flat, circular piece of cooked batter made from milk, flour, and eggs."));
         list.add(new MainModel(R.drawable.cookies,"Cookies", "2","A cookie is a baked or cooked snack or dessert that is typically small, flat and sweet."));
 
 

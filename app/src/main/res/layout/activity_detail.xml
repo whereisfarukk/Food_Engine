@@ -102,9 +102,21 @@
             android:id="@+id/phoneBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edittex_background"
             android:ems="10"
             android:hint="Phone"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:padding="9dp" />
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittex_background"
+            android:ems="10"
+            android:hint="PNR Number"
             android:inputType="phone"
             android:minHeight="48dp"
             android:padding="9dp" />
