@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
 
     static final String DBNAME = "mydatabase.db";
-    static final int DBVERSION = 8;
+    static final int DBVERSION = 13;
 
     public DBHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVERSION);
@@ -34,12 +34,12 @@ public class DBHelper extends SQLiteOpenHelper {
             "quantity integer," +
             "description text)";
 
-        String createFoods = "create table foods" +
-            "(id integer primary key autoincrement," +
-            "foodName text," +
-            "image integer," +
-            "price integer," +
-            "description text)";
+//        String createFoods = "create table foods" +
+//            "(id integer primary key autoincrement," +
+//            "foodName text," +
+//            "image integer," +
+//            "price integer," +
+//            "description text)";
 
         String createUsers = "create table users" +
             "(userName text," +
@@ -47,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
             "password text)";
 
         database.execSQL(createOrders);
-        database.execSQL(createFoods);
+//        database.execSQL(createFoods);
         database.execSQL(createUsers);
     }
 

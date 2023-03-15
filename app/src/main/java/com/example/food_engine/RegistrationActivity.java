@@ -50,7 +50,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 values.put("phone", phoneNumber);
                 values.put("password", password);
                 sqLiteDatabase.insert("users", null, values);
-                startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
             }
         }
     }

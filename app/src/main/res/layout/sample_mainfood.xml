@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/burger" />
+                app:srcCompat="@drawable/cheese_burger" />
 
             <LinearLayout
                 android:layout_width="match_parent"

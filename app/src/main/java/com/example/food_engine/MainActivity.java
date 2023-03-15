@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         ArrayList<MainModel>list=new ArrayList<>();
-        list.add(new MainModel(R.drawable.burger,"Cheese Burger", "4","Chicken Burger with extra cheese"));
+        list.add(new MainModel(R.drawable.cheese_burger,"Cheese Burger", "4","Chicken Burger with extra cheese"));
         list.add(new MainModel(R.drawable.sandwitch,"Sandwich", "2","A sandwich is a food typically consisting of vegetables, sliced cheese or meat, placed on or between slices of bread"));
         list.add(new MainModel(R.drawable.pizza,"Pizza", "4","Pizza, dish of Italian origin consisting of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella or other cheese"));
         list.add(new MainModel(R.drawable.french_fries,"French fries", "3","French fries typically made from deep-fried potatoes that have been cut into various shapes, especially thin strips."));
